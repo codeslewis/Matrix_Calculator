@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+@Deprecated
 public class Inputs {
     // Read Matrix
     private static double[][] readMatrix(int rows, int cols, Scanner reader) {

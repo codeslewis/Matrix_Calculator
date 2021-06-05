@@ -1,6 +1,36 @@
+import java.util.Scanner;
+
 public class Calculations {
     private Calculations() {}
 
+    public static void biCalculation(Operation operation, Scanner reader) {
+        Calculation calculator;
+        Matrix firstMatrix;
+        Matrix secondMatrix;
+        System.out.println(operation.getExplanation());
+        System.out.println("Let's start with the first matrix:");
+        firstMatrix = Matrix.newMatrixFromInput(reader);
+        System.out.println("Now for the second matrix:");
+        secondMatrix = Matrix.newMatrixFromInput(reader);
+        switch (operation) {
+            case ADD:
+                calculator = new Add(firstMatrix, secondMatrix);
+                break;
+            case MULTIPLY:
+                calculator = new MultiplyMatrices(firstMatrix, secondMatrix);
+                break;
+            default:
+                calculator = new Add(firstMatrix, secondMatrix);
+        }
+        try {
+            Matrix result = calculator.calculate();
+            result.printFormattedMatrix();
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Deprecated
     public static double[][] calculateAddition(double[][] first, double[][] second) {
         double[][] outputMatrix = new double[first.length][first[0].length];
         for (int i = 0; i < outputMatrix.length; i++) {
@@ -10,6 +40,8 @@ public class Calculations {
         }
         return outputMatrix;
     }
+
+    @Deprecated
     public static double[][] calculateScalarMult(double[][] matrix, double scalar) {
         double[][] outputMatrix = new double[matrix.length][matrix[0].length];
         for (int i = 0; i < matrix.length; i++) {
@@ -19,6 +51,8 @@ public class Calculations {
         }
         return outputMatrix;
     }
+
+    @Deprecated
     public static double[][] calculateMatrixMult(int fRows, int fCols, int sCols, double[][] first, double[][] second) {
         double[][] outputMatrix = new double[fRows][sCols];
         for (int i = 0; i < fRows; i++) {
@@ -30,6 +64,8 @@ public class Calculations {
         }
         return outputMatrix;
     }
+
+    @Deprecated
     public static double[][] calculateMainTransposition(double[][] matrix) {
         /////////////////////////////////////////////
         // currently works only for a square matrix//
@@ -42,6 +78,8 @@ public class Calculations {
         }
         return outputMatrix;
     }
+
+    @Deprecated
     public static double[][] calculateSideTransposition(double[][] matrix, int rows, int cols) {
         double[][] outputMatrix = new double[rows][cols];
         for (int i = 0; i < rows; i++) {
@@ -51,6 +89,8 @@ public class Calculations {
         }
         return outputMatrix;
     }
+
+    @Deprecated
     public static double[][] calculateVerticalTransposition(double[][] matrix, int rows, int cols) {
         double[][] outputMatrix = new double[rows][cols];
         for (int i = 0; i < rows; i++) {
@@ -60,6 +100,8 @@ public class Calculations {
         }
         return outputMatrix;
     }
+
+    @Deprecated
     public static double[][] calculateHorizontalTransposition(double[][] matrix, int rows, int cols) {
         double[][] outputMatrix = new double[rows][cols];
         for (int i = 0; i < rows; i++) {
@@ -67,6 +109,8 @@ public class Calculations {
         }
         return outputMatrix;
     }
+
+    @Deprecated
     public static double calculateDeterminant(double[][] matrix) {
         double det = 0;
         if (matrix.length == 2) {
@@ -78,6 +122,8 @@ public class Calculations {
         }
         return det;
     }
+
+    @Deprecated
     // Used to reduce matrix while calculating Determinant
     public static double[][] stripMatrix(double[][] matrix, int num) {
         double[][] output = new double[matrix.length - 1][matrix.length - 1];
@@ -93,6 +139,8 @@ public class Calculations {
         }
         return output;
     }
+
+    @Deprecated
     public static double[][] stripMatrix(double[][] matrix, int row, int col) {
         // overloads strip method and returns a new matrix with a specified row and column removed
         double[][] output = new double[matrix.length - 1][matrix.length - 1];
@@ -111,9 +159,13 @@ public class Calculations {
         }
         return output;
     }
+
+    @Deprecated
     public static double twoByTwoDeterminant(double[][] matrix) {
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
     }
+
+    @Deprecated
     public static double[][] findCofactors(double[][] matrix) {
         double[][] output = new double[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {

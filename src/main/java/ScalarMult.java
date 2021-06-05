@@ -19,9 +19,4 @@ public class ScalarMult implements Calculation{
         }
         return outputMatrix;
     }
-
-    @Override
-    public Operation getCalculation() {
-        return Operation.SCALAR;
-    }
 }

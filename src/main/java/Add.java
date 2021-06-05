@@ -21,11 +21,6 @@ public class Add implements Calculation {
         return outputMatrix;
     }
 
-    @Override
-    public Operation getCalculation() {
-        return Operation.ADD;
-    }
-
     private boolean validateOperation() {
         return first.getRows() == second.getRows() && first.getCols() == second.getCols();
     }

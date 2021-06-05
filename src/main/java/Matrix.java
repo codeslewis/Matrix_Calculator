@@ -36,6 +36,12 @@ public class Matrix {
         matrix = new double[rows][cols];
     }
 
+    public Matrix(double[][] matrix) {
+        this.matrix = matrix;
+        this.rows = matrix.length;
+        this.cols = matrix[0].length;
+    }
+
     public int getRows() {
         return rows;
     }

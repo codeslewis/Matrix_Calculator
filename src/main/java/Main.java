@@ -9,6 +9,7 @@ public class Main {
         while (!exit) {
             int menuChoice = menu.mainMenuSelection(reader);
             Calculation calculator;
+            Operation operation;
 
             switch (menuChoice) {
                 case 0:
@@ -16,21 +17,11 @@ public class Main {
                     System.out.println("Exiting!");
                     break;
                 case 1:
-                    System.out.println("Performing Matrix Addition");
-                    System.out.println("Let's start with the first matrix:");
-                    Matrix firstMatrix = Matrix.newMatrixFromInput(reader);
-                    System.out.println("Now for the second matrix:");
-                    Matrix secondMatrix = Matrix.newMatrixFromInput(reader);
-                    calculator = new Add(firstMatrix, secondMatrix);
-                    try {
-                        Matrix result = calculator.calculate();
-                        result.printFormattedMatrix();
-                    } catch (InvalidInputException e) {
-                        System.out.println(e.getMessage());
-                    }
+                    Calculations.biCalculation(Operation.ADD, reader);
                     break;
                 case 2:
-                    System.out.println("Performing Scalar Multiplication");
+                    operation = Operation.SCALAR;
+                    System.out.println(operation.getExplanation());
                     Matrix matrix = Matrix.newMatrixFromInput(reader);
                     System.out.println("\tEnter a scalar to multiply by:");
                     System.out.print("--> ");
@@ -39,8 +30,7 @@ public class Main {
                     calculator.calculate().printFormattedMatrix();
                     break;
                 case 3:
-                    System.out.println("Performing Matrix Multiplication");
-                    Inputs.multiplyMatrices(reader);
+                    Calculations.biCalculation(Operation.MULTIPLY, reader);
                     break;
                 case 4:
                     int transpositionChoice = menu.transposeMenuSelection(reader);
