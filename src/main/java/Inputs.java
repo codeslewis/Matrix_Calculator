@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Inputs {
     // Read Matrix
-    public static double[][] readMatrix(int rows, int cols, Scanner reader) {
+    private static double[][] readMatrix(int rows, int cols, Scanner reader) {
         System.out.println("\tEnter each element of the matrix: ");
         double[][] matrix = new double[rows][cols];
         for (int i = 0; i < matrix.length; i++) {
@@ -13,29 +13,36 @@ public class Inputs {
         }
         return matrix;
     }
-    public static int readRows(Scanner reader) {
+    private static int readRows(Scanner reader) {
         System.out.print("\tEnter the number of rows in the matrix\n");
         System.out.print("--> ");
         return reader.nextInt();
     }
-    public static int readColumns(Scanner reader) {
+    private static int readColumns(Scanner reader) {
         System.out.print("\tEnter the number of columns in the matrix\n");
         System.out.print("--> ");
         return reader.nextInt();
     }
 
+    private static Matrix newMatrixFromInput(Scanner scanner) {
+        int rows = readRows(scanner);
+        int cols = readColumns(scanner);
+        Matrix output = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print((i + 1) + ", " + (j + 1) + " --> ");
+                output.setEntry(i, j, scanner.nextDouble());
+            }
+        }
+        return output;
+    }
+
     // Matrix Inputs for processing calculations
     public static void addition(Scanner reader) {
         System.out.println("Let's start with the first matrix:");
-        int fRows = Inputs.readRows(reader);
-        int fCols = Inputs.readColumns(reader);
-        double[][] fMatrix = Inputs.readMatrix(fRows, fCols, reader);
-        Matrix firstMatrix = new Matrix(fRows, fCols, fMatrix);
+        Matrix firstMatrix = newMatrixFromInput(reader);
         System.out.println("Now for the second matrix:");
-        int rows = Inputs.readRows(reader);
-        int cols = Inputs.readColumns(reader);
-        double[][] matrix = Inputs.readMatrix(rows, cols, reader);
-        Matrix secondMatrix = new Matrix(rows, cols, matrix);
+        Matrix secondMatrix = newMatrixFromInput(reader);
         Calculation calculator = new Add(firstMatrix, secondMatrix);
         try {
             Matrix result = calculator.calculate();
@@ -45,14 +52,12 @@ public class Inputs {
         }
     }
     public static void scalarMultiplication(Scanner reader) {
-        int rows = Inputs.readRows(reader);
-        int cols = Inputs.readColumns(reader);
-        double[][] matrix = Inputs.readMatrix(rows, cols, reader);
+        Matrix matrix = newMatrixFromInput(reader);
         System.out.println("\tEnter a scalar to multiply by:");
         System.out.print("--> ");
         double scalar = reader.nextDouble();
-        double[][] outputMatrix = Calculations.calculateScalarMult(matrix, scalar);
-        MatrixPrinter.printMatrix(outputMatrix);
+        Calculation calculator = new ScalarMult(matrix, scalar);
+        calculator.calculate().printFormattedMatrix();
     }
     public static void multiplyMatrices(Scanner reader) {
         // Matrix multiplication
