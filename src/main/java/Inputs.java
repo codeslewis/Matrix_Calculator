@@ -30,15 +30,18 @@ public class Inputs {
         int fRows = Inputs.readRows(reader);
         int fCols = Inputs.readColumns(reader);
         double[][] fMatrix = Inputs.readMatrix(fRows, fCols, reader);
+        Matrix firstMatrix = new Matrix(fRows, fCols, fMatrix);
         System.out.println("Now for the second matrix:");
         int rows = Inputs.readRows(reader);
         int cols = Inputs.readColumns(reader);
         double[][] matrix = Inputs.readMatrix(rows, cols, reader);
-        if (!(fRows == rows) || !(fCols == cols)) {
-            System.out.println("\tERROR!\n\tMatrices must have the same dimensions to add");
-        } else {
-            double[][] outputMatrix = Calculations.calculateAddition(fMatrix, matrix);
-            MatrixPrinter.printMatrix(outputMatrix);
+        Matrix secondMatrix = new Matrix(rows, cols, matrix);
+        Calculation calculator = new Add(firstMatrix, secondMatrix);
+        try {
+            Matrix result = calculator.calculate();
+            result.printFormattedMatrix();
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
         }
     }
     public static void scalarMultiplication(Scanner reader) {

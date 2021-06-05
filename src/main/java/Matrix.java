@@ -5,17 +5,10 @@ public class Matrix {
     private int cols;
     private double[][] matrix;
 
-    public Matrix(int rows, int cols, double[] input) {
+    public Matrix(int rows, int cols, double[][] matrix) {
         this.rows = rows;
         this.cols = cols;
-        matrix = new double[rows][cols];
-        int iterator = 0;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                matrix[i][j] = input[iterator];
-                iterator++;
-            }
-        }
+        this.matrix = matrix;
     }
 
     public Matrix(int rows, int cols) {
