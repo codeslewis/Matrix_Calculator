@@ -1,7 +1,5 @@
 package io.lewiscodes.matrices;
 
-import io.lewiscodes.matrices.Calculators.Calculation;
-import io.lewiscodes.matrices.Calculators.ScalarMult;
 import io.lewiscodes.matrices.Menu.Menu;
 import io.lewiscodes.matrices.Menu.Operation;
 
@@ -15,8 +13,6 @@ public class Main {
         boolean exit = false;
         while (!exit) {
             int menuChoice = menu.mainMenuSelection(reader);
-            Calculation calculator;
-            Operation operation;
 
             switch (menuChoice) {
                 case 0:
@@ -27,14 +23,7 @@ public class Main {
                     Calculations.biCalculation(Operation.ADD, reader);
                     break;
                 case 2:
-                    operation = Operation.SCALAR;
-                    System.out.println(operation.getExplanation());
-                    Matrix matrix = Matrix.newMatrixFromInput(reader);
-                    System.out.println("\tEnter a scalar to multiply by:");
-                    System.out.print("--> ");
-                    double scalar = reader.nextDouble();
-                    calculator = new ScalarMult(matrix, scalar);
-                    calculator.calculate().printFormattedMatrix();
+                    Calculations.unaryCalculation(Operation.SCALAR, reader);
                     break;
                 case 3:
                     Calculations.biCalculation(Operation.MULTIPLY, reader);
@@ -43,7 +32,7 @@ public class Main {
                     int transpositionChoice = menu.transposeMenuSelection(reader);
                     switch (transpositionChoice) {
                         case 1:
-                            System.out.println("Performing io.lewiscodes.matrices.Main Diagonal Transposition");
+                            System.out.println("Performing Diagonal Transposition");
                             Inputs.mainTransposition(reader);
                             break;
                         case 2:
@@ -64,11 +53,11 @@ public class Main {
                     }
                     break;
                 case 5:
-                    System.out.println("Calculating the Determinant of a io.lewiscodes.matrices.Matrix");
+                    System.out.println("Calculating the Determinant of a Matrix");
                     Inputs.determinantOfMatrix(reader);
                     break;
                 case 6:
-                    System.out.println("Calculating the Inverse of a io.lewiscodes.matrices.Matrix");
+                    System.out.println("Calculating the Inverse of a Matrix");
                     Inputs.inverseOfMatrix(reader);
                     break;
                 default:

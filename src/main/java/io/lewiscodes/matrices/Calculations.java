@@ -3,6 +3,7 @@ package io.lewiscodes.matrices;
 import io.lewiscodes.matrices.Calculators.Add;
 import io.lewiscodes.matrices.Calculators.Calculation;
 import io.lewiscodes.matrices.Calculators.MultiplyMatrices;
+import io.lewiscodes.matrices.Calculators.ScalarMult;
 import io.lewiscodes.matrices.Exceptions.InvalidInputException;
 import io.lewiscodes.matrices.Menu.Operation;
 
@@ -35,6 +36,24 @@ public class Calculations {
             result.printFormattedMatrix();
         } catch (InvalidInputException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public static void unaryCalculation(Operation operation, Scanner reader) {
+        Calculation calculator;
+        Matrix matrix;
+        switch (operation) {
+            case SCALAR:
+                System.out.println(operation.getExplanation());
+                matrix = Matrix.newMatrixFromInput(reader);
+                System.out.println("\tEnter a scalar to multiply by:");
+                System.out.print("--> ");
+                double scalar = reader.nextDouble();
+                calculator = new ScalarMult(matrix, scalar);
+                calculator.calculate().printFormattedMatrix();
+                break;
+            default:
+                System.out.println("Implement more unary methods here");
         }
     }
 
