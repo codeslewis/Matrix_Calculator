@@ -23,42 +23,8 @@ public class Inputs {
         System.out.print("--> ");
         return reader.nextInt();
     }
-
-    private static Matrix newMatrixFromInput(Scanner scanner) {
-        int rows = readRows(scanner);
-        int cols = readColumns(scanner);
-        Matrix output = new Matrix(rows, cols);
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                System.out.print((i + 1) + ", " + (j + 1) + " --> ");
-                output.setEntry(i, j, scanner.nextDouble());
-            }
-        }
-        return output;
-    }
-
     // Matrix Inputs for processing calculations
-    public static void addition(Scanner reader) {
-        System.out.println("Let's start with the first matrix:");
-        Matrix firstMatrix = newMatrixFromInput(reader);
-        System.out.println("Now for the second matrix:");
-        Matrix secondMatrix = newMatrixFromInput(reader);
-        Calculation calculator = new Add(firstMatrix, secondMatrix);
-        try {
-            Matrix result = calculator.calculate();
-            result.printFormattedMatrix();
-        } catch (InvalidInputException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    public static void scalarMultiplication(Scanner reader) {
-        Matrix matrix = newMatrixFromInput(reader);
-        System.out.println("\tEnter a scalar to multiply by:");
-        System.out.print("--> ");
-        double scalar = reader.nextDouble();
-        Calculation calculator = new ScalarMult(matrix, scalar);
-        calculator.calculate().printFormattedMatrix();
-    }
+
     public static void multiplyMatrices(Scanner reader) {
         // Matrix multiplication
         System.out.println("Let's start with the first matrix:");

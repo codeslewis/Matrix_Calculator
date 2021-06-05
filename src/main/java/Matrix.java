@@ -1,9 +1,34 @@
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class Matrix {
     private int rows;
     private int cols;
     private double[][] matrix;
+
+    private static int readRows(Scanner reader) {
+        System.out.print("\tEnter the number of rows in the matrix\n");
+        System.out.print("--> ");
+        return reader.nextInt();
+    }
+    private static int readColumns(Scanner reader) {
+        System.out.print("\tEnter the number of columns in the matrix\n");
+        System.out.print("--> ");
+        return reader.nextInt();
+    }
+
+    public static Matrix newMatrixFromInput(Scanner scanner) {
+        int rows = readRows(scanner);
+        int cols = readColumns(scanner);
+        Matrix output = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print((i + 1) + ", " + (j + 1) + " --> ");
+                output.setEntry(i, j, scanner.nextDouble());
+            }
+        }
+        return output;
+    }
 
     public Matrix(int rows, int cols) {
         this.rows = rows;

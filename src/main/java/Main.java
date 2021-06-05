@@ -8,6 +8,7 @@ public class Main {
         boolean exit = false;
         while (!exit) {
             int menuChoice = menu.mainMenuSelection(reader);
+            Calculation calculator;
 
             switch (menuChoice) {
                 case 0:
@@ -16,11 +17,26 @@ public class Main {
                     break;
                 case 1:
                     System.out.println("Performing Matrix Addition");
-                    Inputs.addition(reader);
+                    System.out.println("Let's start with the first matrix:");
+                    Matrix firstMatrix = Matrix.newMatrixFromInput(reader);
+                    System.out.println("Now for the second matrix:");
+                    Matrix secondMatrix = Matrix.newMatrixFromInput(reader);
+                    calculator = new Add(firstMatrix, secondMatrix);
+                    try {
+                        Matrix result = calculator.calculate();
+                        result.printFormattedMatrix();
+                    } catch (InvalidInputException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 2:
                     System.out.println("Performing Scalar Multiplication");
-                    Inputs.scalarMultiplication(reader);
+                    Matrix matrix = Matrix.newMatrixFromInput(reader);
+                    System.out.println("\tEnter a scalar to multiply by:");
+                    System.out.print("--> ");
+                    double scalar = reader.nextDouble();
+                    calculator = new ScalarMult(matrix, scalar);
+                    calculator.calculate().printFormattedMatrix();
                     break;
                 case 3:
                     System.out.println("Performing Matrix Multiplication");
