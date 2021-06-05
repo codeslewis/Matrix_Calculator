@@ -1,3 +1,10 @@
+package io.lewiscodes.matrices;
+
+import io.lewiscodes.matrices.Calculators.Calculation;
+import io.lewiscodes.matrices.Calculators.ScalarMult;
+import io.lewiscodes.matrices.Menu.Menu;
+import io.lewiscodes.matrices.Menu.Operation;
+
 import java.util.Scanner;
 
 public class Main {
@@ -36,7 +43,7 @@ public class Main {
                     int transpositionChoice = menu.transposeMenuSelection(reader);
                     switch (transpositionChoice) {
                         case 1:
-                            System.out.println("Performing Main Diagonal Transposition");
+                            System.out.println("Performing io.lewiscodes.matrices.Main Diagonal Transposition");
                             Inputs.mainTransposition(reader);
                             break;
                         case 2:
@@ -57,11 +64,11 @@ public class Main {
                     }
                     break;
                 case 5:
-                    System.out.println("Calculating the Determinant of a Matrix");
+                    System.out.println("Calculating the Determinant of a io.lewiscodes.matrices.Matrix");
                     Inputs.determinantOfMatrix(reader);
                     break;
                 case 6:
-                    System.out.println("Calculating the Inverse of a Matrix");
+                    System.out.println("Calculating the Inverse of a io.lewiscodes.matrices.Matrix");
                     Inputs.inverseOfMatrix(reader);
                     break;
                 default:

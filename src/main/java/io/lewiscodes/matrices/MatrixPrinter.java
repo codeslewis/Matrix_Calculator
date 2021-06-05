@@ -1,5 +1,8 @@
+package io.lewiscodes.matrices;
+
 import java.util.stream.IntStream;
 
+@Deprecated
 public class MatrixPrinter {
     public static void printMatrix(double[][] matrix) {
         System.out.println("\tThe result is:");

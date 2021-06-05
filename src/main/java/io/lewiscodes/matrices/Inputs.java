@@ -1,8 +1,9 @@
+package io.lewiscodes.matrices;
+
 import java.util.Scanner;
 
 @Deprecated
 public class Inputs {
-    // Read Matrix
     private static double[][] readMatrix(int rows, int cols, Scanner reader) {
         System.out.println("\tEnter each element of the matrix: ");
         double[][] matrix = new double[rows][cols];
@@ -24,10 +25,10 @@ public class Inputs {
         System.out.print("--> ");
         return reader.nextInt();
     }
-    // Matrix Inputs for processing calculations
+    // io.lewiscodes.matrices.Matrix io.lewiscodes.matrices.Inputs for processing calculations
 
     public static void multiplyMatrices(Scanner reader) {
-        // Matrix multiplication
+        // io.lewiscodes.matrices.Matrix multiplication
         System.out.println("Let's start with the first matrix:");
         int fRows = Inputs.readRows(reader);
         int fCols = Inputs.readColumns(reader);
@@ -82,7 +83,7 @@ public class Inputs {
             System.out.print("\tThe determinant is:\t");
             System.out.print(determinant + "\n");
         } else {
-            System.out.println("Determinant can only be calculated on a square Matrix");
+            System.out.println("Determinant can only be calculated on a square io.lewiscodes.matrices.Matrix");
         }
 
     }

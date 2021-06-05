@@ -1,23 +1,25 @@
+package io.lewiscodes.matrices.Menu;
+
 import java.util.Scanner;
 
 public class Menu {
     private final String[] menuOptions = {
-            "Add Matrices",
+            "io.lewiscodes.matrices.Calculators.Add Matrices",
             "Scalar Multiplication",
             "Multiply Matrices",
-            "Transpose Matrix",
+            "Transpose io.lewiscodes.matrices.Matrix",
             "Determinant",
-            "Inverse Matrix",
+            "Inverse io.lewiscodes.matrices.Matrix",
     };
     private final String[] subMenuOptions = {
-            "Main diagonal",
+            "io.lewiscodes.matrices.Main diagonal",
             "Side diagonal",
             "Vertical line",
             "Horizontal line"
     };
-    private final String title = "\tMatrix Calculator\n";
-    private final String subTitle = "\tMain Menu\n";
-    private final String transpositionSubTitle = "\tTransposition Menu\n";
+    private final String title = "\tio.lewiscodes.matrices.Matrix Calculator\n";
+    private final String subTitle = "\tio.lewiscodes.matrices.Main io.lewiscodes.matrices.Menu.io.lewiscodes.matrices.Menu\n";
+    private final String transpositionSubTitle = "\tTransposition io.lewiscodes.matrices.Menu.io.lewiscodes.matrices.Menu\n";
     private final String mainMenu = "Please select one of the following options:\n";
     private final String prompt = "--> ";
 

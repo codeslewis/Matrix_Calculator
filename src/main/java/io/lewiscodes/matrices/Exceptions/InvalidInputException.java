@@ -1,5 +1,7 @@
+package io.lewiscodes.matrices.Exceptions;
+
 public class InvalidInputException extends IllegalArgumentException{
-    InvalidInputException(String message) {
+    public InvalidInputException(String message) {
         super(message);
     }
 }

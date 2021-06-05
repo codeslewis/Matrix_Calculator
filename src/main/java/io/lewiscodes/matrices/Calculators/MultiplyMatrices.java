@@ -1,4 +1,9 @@
-public class MultiplyMatrices implements Calculation{
+package io.lewiscodes.matrices.Calculators;
+
+import io.lewiscodes.matrices.Exceptions.InvalidInputException;
+import io.lewiscodes.matrices.Matrix;
+
+public class MultiplyMatrices implements Calculation {
     private Matrix first;
     private Matrix second;
 

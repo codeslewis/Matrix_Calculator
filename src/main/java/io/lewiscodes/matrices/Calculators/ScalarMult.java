@@ -1,4 +1,8 @@
-public class ScalarMult implements Calculation{
+package io.lewiscodes.matrices.Calculators;
+
+import io.lewiscodes.matrices.Matrix;
+
+public class ScalarMult implements Calculation {
     private Matrix matrix;
     private double scalar;
 
