@@ -10,59 +10,51 @@ public class Main {
         Scanner reader = new Scanner(System.in);
         Menu menu = new Menu();
 
-        boolean exit = false;
-        while (!exit) {
+        while (true) {
             int menuChoice = menu.mainMenuSelection(reader);
 
             switch (menuChoice) {
-                case 0:
-                    exit = true;
-                    System.out.println("Exiting!");
-                    break;
-                case 1:
-                    Calculations.biCalculation(Operation.ADD, reader);
-                    break;
-                case 2:
-                    Calculations.unaryCalculation(Operation.SCALAR, reader);
-                    break;
-                case 3:
-                    Calculations.biCalculation(Operation.MULTIPLY, reader);
-                    break;
-                case 4:
+                case 0 -> exitProgram();
+                case 1 -> Calculations.biCalculation(Operation.ADD, reader);
+                case 2 -> Calculations.unaryCalculation(Operation.SCALAR, reader);
+                case 3 -> Calculations.biCalculation(Operation.MULTIPLY, reader);
+                case 4 -> {
                     int transpositionChoice = menu.transposeMenuSelection(reader);
                     switch (transpositionChoice) {
-                        case 1:
+                        case 1 -> {
                             System.out.println("Performing Diagonal Transposition");
                             Inputs.mainTransposition(reader);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Performing Side Transposition");
                             Inputs.sideTransposition(reader);
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
                             System.out.println("Performing Vertical Transposition");
                             Inputs.verticalTransposition(reader);
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
                             System.out.println("Performing Horizontal Transposition");
                             Inputs.horizontalTransposition(reader);
-                            break;
-                        default:
-                            System.out.println("Unrecognised input... restarting program");
-                            break;
+                        }
+                        default -> System.out.println("Unrecognised input... restarting program");
                     }
-                    break;
-                case 5:
+                }
+                case 5 -> {
                     System.out.println("Calculating the Determinant of a Matrix");
                     Inputs.determinantOfMatrix(reader);
-                    break;
-                case 6:
+                }
+                case 6 -> {
                     System.out.println("Calculating the Inverse of a Matrix");
                     Inputs.inverseOfMatrix(reader);
-                    break;
-                default:
-                    System.out.println("Unrecognised input, please try again");
+                }
+                default -> System.out.println("Unrecognised input, please try again");
             }
         }
+    }
+
+    private static void exitProgram() {
+        System.out.println("Exiting!");
+        System.exit(1);
     }
 }
