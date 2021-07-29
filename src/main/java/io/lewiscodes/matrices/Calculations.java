@@ -43,7 +43,7 @@ public class Calculations {
         Calculation calculator;
         Matrix matrix;
         switch (operation) {
-            case SCALAR -> {
+            case SCALAR:
                 System.out.println(operation.getExplanation());
                 matrix = Matrix.newMatrixFromInput(reader);
                 System.out.println("\tEnter a scalar to multiply by:");
@@ -51,8 +51,9 @@ public class Calculations {
                 double scalar = reader.nextDouble();
                 calculator = new ScalarMult(matrix, scalar);
                 calculator.calculate().printFormattedMatrix();
-            }
-            default -> System.out.println("Implement more unary methods here");
+                break;
+            default:
+                System.out.println("Implement more unary methods here");
         }
     }
 
