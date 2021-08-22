@@ -67,4 +67,26 @@ public class Matrix {
             System.out.println();
         }
     }
+    
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Matrix)) {
+            return false;
+        }
+        Matrix comparator = (Matrix) other;
+        if (other == this) {
+            return true;
+        }
+        if (this.rows != comparator.getRows() || this.cols != comparator.getCols()) {
+            return false;
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (this.getEntry(i, j) != comparator.getEntry(i, j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

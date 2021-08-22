@@ -28,4 +28,30 @@ public class AddTest {
       "Expected IllegalArgumentException to be thrown when different sized Matrices passed"
     );
   }
+  
+  @Test
+  public void simpleAdd() {
+    Matrix first = new Matrix(new double[][] {
+      {1.0, 1.0, 1.0},
+      {1.0, 1.0, 1.0},
+      {1.0, 1.0, 1.0}
+    });
+    Matrix second = new Matrix(new double[][] {
+      {1.0, 1.0, 1.0},
+      {1.0, 1.0, 1.0},
+      {1.0, 1.0, 1.0}
+    });
+    Matrix expected = new Matrix(new double[][] {
+      {2.0, 2.0, 2.0},
+      {2.0, 2.0, 2.0},
+      {2.0, 2.0, 2.0}
+    });
+    Calculation adder = new Add(first, second);
+    Matrix result = adder.calculate();
+    assertEquals(
+      expected, 
+      result,
+      "Simple Add test failed"
+    );
+  }
 }
