@@ -1,6 +1,5 @@
 package io.lewiscodes.matrices.Calculators;
 
-import io.lewiscodes.matrices.Exceptions.InvalidInputException;
 import io.lewiscodes.matrices.Matrix;
 
 public class MultiplyMatrices implements Calculation {
@@ -14,7 +13,7 @@ public class MultiplyMatrices implements Calculation {
     @Override
     public Matrix calculate() {
         if (!validateOperation()) {
-            throw new InvalidInputException("\tERROR\n\tMatrices cannot be multiplied\n\tThe number of rows of a matrix must match the number of columns of another matrix in order to multiply them\n");
+            throw new IllegalArgumentException("\tERROR\n\tMatrices cannot be multiplied\n\tThe number of rows of a matrix must match the number of columns of another matrix in order to multiply them\n");
         }
         double[][] outputMatrix = new double[first.getRows()][second.getCols()];
         for (int i = 0; i < first.getRows(); i++) {
